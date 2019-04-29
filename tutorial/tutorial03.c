@@ -177,7 +177,6 @@ void audio_callback(void *userdata, Uint8 *stream, int len) {
 		stream += len1;
 		audio_buf_index += len1;
 	}
-	printf("11111111111111\n");
 }
 
 int main(int argc, char * argv[]) {
@@ -301,18 +300,13 @@ int main(int argc, char * argv[]) {
 			NULL
 		);
 
-	i = 0;
-	printf("11111111111\r\n");
+	//i = 0;
 	while(av_read_frame(pFormatCtx, &packet) >= 0) {
-	    printf("xxxxxxxx %d %d\r\n", packet.stream, videoStream);
-
 	    if(packet.stream_index == videoStream) {
 		    avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);
 
-		    printf("33333333333\r\n");
 			if(frameFinished) {
 			    SDL_LockYUVOverlay(bmp);
-		    printf("4444444444444\r\n");
 
 				AVPicture pict;
 				pict.data[0] = bmp->pixels[0];
@@ -341,9 +335,11 @@ int main(int argc, char * argv[]) {
 				rect.w = pCodecCtx->width;
 				rect.h = pCodecCtx->height;
 				SDL_DisplayYUVOverlay(bmp, &rect);
-				av_free_packet(&packet);
+				SDL_Delay(40);
 			}
-		} else if(packet.stream_index == audioStream) {
+		    av_free_packet(&packet);
+		}
+		else if(packet.stream_index == audioStream) {
 		    packet_queue_put(&audioq, &packet);
 		} else {
 		    av_free_packet(&packet);

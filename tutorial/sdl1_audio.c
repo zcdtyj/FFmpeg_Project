@@ -16,7 +16,8 @@ static uint32_t *audio_len;
 static uint8_t *audio_pos;
 
 void fill_audio(void *udata, uint8_t *stream, int len) {
-    if(audio_len == 0)
+    SDL_memset(stream, 0, len);
+	if(audio_len == 0)
 		return;
 
 	len = (len > audio_len ? audio_len : len);
@@ -33,7 +34,7 @@ int main(int argc, char *argv[])
 	AVCodecContext *pCodecCtx;
 	AVCodec *pCodec;
     
-	char url[] = "audio.aac";
+	char url[] = "test.mp3";
 
 	av_register_all();
 	pFormatCtx = avformat_alloc_context();
@@ -57,10 +58,13 @@ int main(int argc, char *argv[])
 
 	if(audioStream == -1)
 		return -1;
+    
+	pCodecCtx = pFormatCtx->streams[audioStream]->codec;
+	pCodec = avcodec_find_decoder(pCodecCtx->codec_id);
+	avcodec_open2(pCodecCtx, pCodec, NULL);
 
-	AVPacket *packet = (AVPacket *)malloc(sizeof(AVPacket));
+	AVPacket *packet = (AVPacket *)av_malloc(sizeof(AVPacket));
 	av_init_packet(packet);
-
 	uint64_t out_channel_layout = AV_CH_LAYOUT_STEREO;
 
 	int out_nb_samples = pCodecCtx->frame_size;
@@ -81,6 +85,7 @@ int main(int argc, char *argv[])
 	SDL_AudioSpec wanted_spec;
     wanted_spec.freq = out_sample_rate;
 	wanted_spec.format = AUDIO_S16SYS;
+	wanted_spec.channels = out_channels;
 	wanted_spec.silence = 0;
 	wanted_spec.samples = out_nb_samples;
 	wanted_spec.callback = fill_audio;
@@ -107,7 +112,6 @@ int main(int argc, char *argv[])
 	swr_init(au_convert_ctx);
 
 	SDL_PauseAudio(0);
-
 	while(av_read_frame(pFormatCtx, packet) >= 0) {
 	    if(packet->stream_index == audioStream) {
 		    ret = avcodec_decode_audio4(pCodecCtx, pFrame, &got_picture, packet);
@@ -120,11 +124,13 @@ int main(int argc, char *argv[])
 				index++;
 			}
 
+			while(audio_len > 0) {
+				SDL_Delay(1);
+			}
+            
 			audio_chunk = (uint8_t *)out_buffer;
 			audio_len = out_buffer_size;
 			audio_pos = audio_chunk;
-			while(audio_len > 0)
-				SDL_Delay(1);
 		}
 		av_free_packet(packet);
 	}

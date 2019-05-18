@@ -54,3 +54,13 @@ vga to FHD
 ~~~
 ffmpeg -i test.mp4 -vf scale=1920:1080 test_1920x1080.mp4
 ~~~
+
+
+# ffprobe
+## show information
+### information
+~~~
+ffprobe -show_data test.mp4
+ffprobe -show_packets test.mp4
+ffprobe -show_streams test.mp4
+~~~

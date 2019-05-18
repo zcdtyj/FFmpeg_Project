@@ -64,3 +64,9 @@ ffprobe -show_data test.mp4
 ffprobe -show_packets test.mp4
 ffprobe -show_streams test.mp4
 ~~~
+
+### output format
+support XML, INI, JSON, CSV, FLAT
+~~~
+ffprobe -of json -show_streams test.mp4
+~~~

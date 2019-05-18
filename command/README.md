@@ -1,6 +1,11 @@
 # H264(libx264):
 
+encode
 ~~~
-ffmpeg -s 1920x1080 -i  src01_1920x1080.yuv -b:v 7776k -r 25 -vcodec libx264 -x264opts ssim src01_1920x1080_0.150.h264
-ffmpeg -i src01_1920x1080_0.150.h264 src01_1920x1080_0.150_264.yuv
+ffmpeg -s 320x180 -i test_yuv420p_320x180.yuv -b:v 1024k -r 25 -vcodec libx264 test_yuv420p_320x180.h264
+~~~
+
+decode
+~~~
+ffmpeg -i test_yuv420p_320x180.h264 test_yuv420p_320x180.yuv
 ~~~

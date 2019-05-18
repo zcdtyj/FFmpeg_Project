@@ -35,5 +35,11 @@ ffmpeg -i input.mp4 -vn -acodec copy output.aac
 ### H.264
 extract video data
 ~~~
-ffmpeg -i input.mp4 -an -acodec copy output.h264
+ffmpeg -i input.mp4 -an -vcodec copy output.h264
+~~~
+
+### convert muxer
+flv to mp4
+~~~
+ffmpeg -i input.flv -c copy -f mp4 output.mp4
 ~~~

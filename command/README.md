@@ -45,3 +45,12 @@ flv to mp4
 ~~~
 ffmpeg -i input.flv -c copy -f mp4 output.mp4
 ~~~
+
+
+# Scale
+## scale
+### scale command
+vga to FHD
+~~~
+ffmpeg -i test.mp4 -vf scale=1920:1080 test_1920x1080.mp4
+~~~

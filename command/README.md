@@ -1,5 +1,7 @@
-# H264(libx264):
+#Command
 
+
+## H264(libx264):
 encode
 ~~~
 ffmpeg -s 320x180 -i test_yuv420p_320x180.yuv -b:v 1024k -r 25 -vcodec libx264 test_yuv420p_320x180.h264
@@ -8,4 +10,16 @@ ffmpeg -s 320x180 -i test_yuv420p_320x180.yuv -b:v 1024k -r 25 -vcodec libx264 t
 decode
 ~~~
 ffmpeg -i test_yuv420p_320x180.h264 test_yuv420p_320x180.yuv
+~~~
+
+
+## MPEG2
+encode
+~~~
+ffmpeg -s 320x180 -i test_yuv420p_320x180.yuv -b:v 1024k -r 25 -vcodec mpeg2video test_yuv420p_320x180.mpg
+~~~
+
+decode
+~~~
+ffmpeg -i test_yuv420p_320x180.mpg test_yuv420p_320x180.yuv
 ~~~

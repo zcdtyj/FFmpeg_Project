@@ -38,7 +38,9 @@ extract video data
 ffmpeg -i input.mp4 -an -vcodec copy output.h264
 ~~~
 
-### convert muxer
+# Muxer and Demuxer
+## Convert
+### Muxer
 flv to mp4
 ~~~
 ffmpeg -i input.flv -c copy -f mp4 output.mp4

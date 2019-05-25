@@ -96,4 +96,4 @@ cgdb可以看作gdb的界面增强版,用来替代gdb的 gdb -tui。cgdb主要�
 [CGDB中文手册](https://leeyiw.gitbooks.io/cgdb-manual-in-chinese/content/index.html)
 
 English version
-[CGDB Manual](CGDB Manual)
+[CGDB Manual](http://cgdb.github.io/docs/cgdb.html)

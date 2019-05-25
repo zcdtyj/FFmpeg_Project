@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
 	int y_size;
 	int framecnt = 0;
 
-	FILE *in_file = fopen("test_yuv420p_320x180.yuv", "rb");
+	FILE *in_file = fopen("../resource/test_yuv420p_320x180.yuv", "rb");
 	int in_w =320, in_h = 180;
 	int framenum = 20;
 
-	const char *out_file = "ds.h264";
+	const char *out_file = "../resource/ds.h264";
 
 	av_register_all();
 	pFormatCtx = avformat_alloc_context();

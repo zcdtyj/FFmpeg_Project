@@ -1,6 +1,6 @@
 # Command
 
-## Encode and Decode
+## Video Encode and Decode
 ### H264(libx264):
 encode
 ~~~
@@ -38,6 +38,14 @@ extract video data
 ffmpeg -i input.mp4 -an -vcodec copy output.h264
 ~~~
 
+
+## Audio Encode and Decode
+### MP3
+aac to mp3
+~~~
+ffmpeg -i audio.aac -c:a libmp3lame -ac 2 -q:a 2 audio.mp3
+~~~
+
 # Muxer and Demuxer
 ## Convert
 ### Muxer
@@ -54,7 +62,6 @@ vga to FHD
 ~~~
 ffmpeg -i test.mp4 -vf scale=1920:1080 test_1920x1080.mp4
 ~~~
-
 
 # ffprobe
 ## show information

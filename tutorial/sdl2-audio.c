@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 	int64_t in_channel_layout;
 	struct SwrContext *au_convert_ctx;
     
-	char url[] = "test.mp3";
+	char url[] = "../resource/test.mp3";
 	av_register_all();
 	avformat_network_init();
 

@@ -105,7 +105,6 @@ int audio_decode_frame(AVCodecContext *aCodecCtx, uint8_t *audio_buf, int buf_si
 	    while(audio_pkt_size > 0) {
 		    int got_frame = 0;
 			len1 = avcodec_decode_audio4(aCodecCtx, &frame, &got_frame, &pkt);
-			printf("2222222222222\n");
 			if(len1 < 0) {
 			    audio_pkt_size = 0;
 				break;

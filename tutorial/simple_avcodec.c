@@ -17,14 +17,14 @@ int main(int argc, char *argv[]) {
 	AVPacket pkt;
 	int y_size;
 	int framecnt = 0;
-	char filename_in[] = "xxxxx.yuv";
+	char filename_in[] = "../resource/test_yuv420p_320x180.yuv";
 
 #if TEST_HEVC
 	AVCodecID codec_id = AV_CODEC_ID_HEVC;
-	char filename_out[] = "ds.hevc";
+	char filename_out[] = "../resource/ds.hevc";
 #else
 	AVCodecID codec_id = AV_CODEC_ID_H264;
-	char filename_out[] = "ds.h264";
+	char filename_out[] = "../resource/ds.h264";
 #endif
 
     int in_w = 480, in_h = 272;

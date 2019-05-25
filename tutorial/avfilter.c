@@ -75,7 +75,7 @@ static int init_filters(const_char *filters_descr)
 
 }
 
-int amin(int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     int ret;
     AVPacket packet;
     AVframe *pFrame;
@@ -85,13 +85,13 @@ int amin(int argc, char *argv[]) {
     av_register_all();
     avfilter_register_all();
 
-    if((ret = open_input_file("test.flv")) < 0)
+    if((ret = open_input_file("../resource/test.flv")) < 0)
         goto end;
     if((ret = init_filters(ilter_descr)) < 0)
         goto end;
 
     #if ENABLE_YUVFILE
-        FILE *fp_yuv = fopen("test_yuv420p_320x180.yuv", "wb+");
+        FILE *fp_yuv = fopen("../resource/test_yuv420p_320x180.yuv", "wb+");
     #endif
     
     #if ENABLE_SDL

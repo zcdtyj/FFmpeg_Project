@@ -5,12 +5,12 @@
 
 int main(int argc, char *argv[]) 
 {
-    FILE *src_file = fopen("test_yuv420p_320x180.yuv", "rb");
+    FILE *src_file = fopen("../resource/test_yuv420p_320x180.yuv", "rb");
     const int src_w = 320, src_h = 180;
     enum AVPixelFormat src_pixfmt = AV_PIX_FMT_YUV420P;
     int src_bpp = av_get_bits_per_pixel(av_pix_fmt_desc_get(src_pixfmt));
 
-    FILE *dst_file = fopen("test_yuv420p_640x480.rgb", "wb+");
+    FILE *dst_file = fopen("../resource/test_yuv420p_640x480.rgb", "wb+");
     const int dst_w = 640, dst_h = 480;
     enum AVPixelFormat dst_pixfmt  = AV_PIX_FMT_RGB24;
     int dst_bpp = av_get_bits_per_pixel(av_pix_fmt_desc_get(dst_pixfmt));

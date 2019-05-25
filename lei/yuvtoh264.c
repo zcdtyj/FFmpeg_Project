@@ -21,14 +21,23 @@ int main(int argc, char *argv[])
     FILE *in_file = NULL;
     int in_w = 320, in_h = 180;
 
-    const char *out_file = "test_yuv420p_320x180.h264";
-    in_file = fopen("test_yuv420p_320x180.yuv", "rb");
+    const char *out_file = "../resource/test_yuv420p_320x180.h264";
+    in_file = fopen("../resource/test_yuv420p_320x180.yuv", "rb");
 
     av_register_all();
 
     pFormatCtx = avformat_alloc_context();
     avformat_alloc_output_context2(&pFormatCtx, NULL, NULL, out_file);
     fmt = pFormatCtx->oformat;
+
+    // fmt = av_guess_format(NULL, out_file, NULL);
+	// pFormatCtx->oformat = fmt;
+
+	if(avio_open(&pFormatCtx->pb, out_file, AVIO_FLAG_READ_WRITE) < 0) 
+	{
+	    printf("Filed to open output file!\n");
+        return -1;
+	}
 
     video_st = avformat_new_stream(pFormatCtx, 0);
     if(video_st == NULL) {
@@ -65,6 +74,9 @@ int main(int argc, char *argv[])
     }
 
     picture = av_frame_alloc();
+    picture->width = pCodecCtx->width;
+    picture->height = pCodecCtx->height;
+    picture->format = pCodecCtx->pix_fmt;
     size = avpicture_get_size(pCodecCtx->pix_fmt, pCodecCtx->width, pCodecCtx->height);
     picture_buf = (uint8_t *)av_malloc(size);
     avpicture_fill((AVPicture *)picture, (const uint8_t *)picture_buf, pCodecCtx->pix_fmt, pCodecCtx->width, pCodecCtx->height);
@@ -73,8 +85,8 @@ int main(int argc, char *argv[])
 
     int i = 0;
     y_size = pCodecCtx->width * pCodecCtx->height;
+    av_new_packet(&pkt, size);
     while(fread(picture_buf, 1, y_size * 3 / 2, in_file) > 0) {
-        av_new_packet(&pkt, y_size * 3);
         picture->data[0] = picture_buf;
         picture->data[1] = picture_buf + y_size;
         picture->data[2] = picture_buf + y_size * 5 / 4;
@@ -90,9 +102,8 @@ int main(int argc, char *argv[])
         if(got_picture == 1) {
             pkt.stream_index = video_st->index;
             av_write_frame(pFormatCtx, &pkt);
+            av_free_packet(&pkt);
         }
-
-        av_free_packet(&pkt);
     }
     av_write_trailer(pFormatCtx);
     if(video_st) {

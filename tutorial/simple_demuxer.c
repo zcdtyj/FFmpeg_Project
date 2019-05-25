@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
     int videoindex = -1, audioindex = -1;
     int frame_index = 0;
 
-    const char *in_filename = "test.mp4";
-    const char *out_filename_v = "test_video.h264";
-    const char *out_filename_a = "test_video.aac";
+    const char *in_filename = "../resource/test.mp4";
+    const char *out_filename_v = "../resource/test_video.h264";
+    const char *out_filename_a = "../resource/test_video.aac";
 
     av_register_all();
     if((ret = avformat_open_input(&ifmt_ctx, in_filename, 0, 0)) < 0) {

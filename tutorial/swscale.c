@@ -4,13 +4,13 @@
 #include <libavutil/imgutils.h>
 
 int main(int argc, char *argv[]) {
-    FILE *src_file = fopen("sintel_480x272_yuv420p.yuv", "rb");
+    FILE *src_file = fopen("../resource/sintel_480x272_yuv420p.yuv", "rb");
 	const int src_w = 480, src_h = 272;
 	AVPixelFormat src_pixfmt = AV_PIX_FMT_YUV420P;
 
 	int src_bpp = av_get_bits_per_pixel(av_pix_fmt_desc_get(src_pixfmt));
 
-	FILE *dst_file = fopen("sintel_1280x720_rgb24.rgb", "wb");
+	FILE *dst_file = fopen("../resource/sintel_1280x720_rgb24.rgb", "wb");
 	const int dst_w = 1280, dst_h = 720;
 	AVPixelFormat dst_pixfmt = AV_PIX_FMT_RGB24;
 	int dst_bpp = av_get_bits_per_pixel(av_pix_fmt_desc_get(dst_pixfmt));

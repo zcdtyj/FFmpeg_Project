@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	AVCodecContext *pCodecCtx;
 	AVCodec *pCodec;
     
-	char url[] = "test.mp3";
+	char url[] = "../resource/test.mp3";
 
 	av_register_all();
 	pFormatCtx = avformat_alloc_context();

@@ -20,8 +20,8 @@ int main(int argc, char *argv[])
 
     FILE *in_file = NULL;
     int in_w = 320, in_h = 180;
-    const char *out_file = "test_yuv420p_320x180.jpg";
-    in_file = fopen("test_yuv420p_320x180.yuv","rb");
+    const char *out_file = "../resource/test_yuv420p_320x180.jpg";
+    in_file = fopen("../resource/test_yuv420p_320x180.yuv","rb");
     av_register_all();
 
     pFormatCtx = avformat_alloc_context();

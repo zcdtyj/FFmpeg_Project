@@ -91,3 +91,9 @@ $gdb hello 11127
 ## 1.3. 更强大的工具
 ### cgdb
 cgdb可以看作gdb的界面增强版,用来替代gdb的 gdb -tui。cgdb主要功能是在调试时进行代码的同步显示，这无疑增加了调试的方便性，提高了调试效率。界面类似vi，符合unix/linux下开发人员习惯;如果熟悉gdb和vi，几乎可以立即使用cgdb。
+
+中文版
+[CGDB中文手册](https://leeyiw.gitbooks.io/cgdb-manual-in-chinese/content/index.html)
+
+English version
+[CGDB Manual](CGDB Manual)

@@ -17,14 +17,14 @@ int main(int argc, char *argv[])
     int y_size;
     int framecnt = 0;
 
-    char filename_in[] = "test_yuv420p_320x180.yuv";
+    char filename_in[] = "../resource/test_yuv420p_320x180.yuv";
 
 #if TEST_HEVC
     enum AVCodecID codec_id = AV_CODEC_ID_HEVC;
-    char filename_out[] = "test.hevc";
+    char filename_out[] = "../resource/test.hevc";
 #else
     enum AVCodecID codec_id = AV_CODEC_ID_H264;
-    char filename_out[] = "test.h264";
+    char filename_out[] = "../resource/test.h264";
 #endif
 
     int in_w = 320, in_h = 180;

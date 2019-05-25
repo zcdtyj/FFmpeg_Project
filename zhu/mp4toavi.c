@@ -10,8 +10,8 @@ int main(int argc, char *argv[])
     int ret, i;
     int frame_index = 0;
 
-    in_filename = "test,mp4";
-    out_filename = "test.avi";
+    in_filename = "../resource/test,mp4";
+    out_filename = "../resource/test.avi";
     
     av_register_all();
     if((ret = avformat_open_input(&ifmt_ctx, in_filename, 0, 0)) < 0) {

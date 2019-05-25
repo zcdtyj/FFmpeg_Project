@@ -15,10 +15,10 @@ int main(int argc, char *argv[])
     int ret, got_picture;
     struct SwsContext *img_convert_ctx;
 
-    char filepath[] = "test.mp4";
+    char filepath[] = "../resource/test.mp4";
 
-    FILE *fp_yuv = fopen("output.yuv", "wb+");
-    FILE *fp_h264 = fopen("output.h264", "wb+");
+    FILE *fp_yuv = fopen("../resource/output.yuv", "wb+");
+    FILE *fp_h264 = fopen("../resource/output.h264", "wb+");
 
     av_register_all();
     avformat_network_init();

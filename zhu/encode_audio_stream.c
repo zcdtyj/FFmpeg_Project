@@ -52,10 +52,10 @@ int main(int argc, char *argv[]) {
 
     FILE *in_file = NULL;
     int framenum = 1000;
-    const char *out_file = "ws.aac";
+    const char *out_file = "../resource/ws.aac";
     int i;
 
-    in_file = fopen("ws.pcm", "rb");
+    in_file = fopen("../resource/ws.pcm", "rb");
 
     av_register_all();
     pFormatCtx = avformat_alloc_context();

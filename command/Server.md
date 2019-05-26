@@ -22,7 +22,6 @@ pull rtmp server
 you need deploy rtmp + nginx + ffmpeg server
 - start nginx server　<br>
 sudo nginx
-<br>
 - live: deploy rtmp path
 ~~~
 ffmpeg -i test.flv -f flv rtmp://127.0.0.1/live/test
@@ -33,13 +32,10 @@ ffmpeg -i test.flv -f flv rtmp://127.0.0.1/live/test
 FFMPEG + EasyDarwin
 - start EasyDarwin <br>
 sh start.sh
-<br>
 - stop EasyDarwin <br>
 sh stop.sh
-<br>
 - configure EasyDarwin <br>
 easydarwin.ini
-
 ~~~
 ffmpeg -re -i test.mp4 -f rtsp -rtsp_transport tcp rtsp://127.0.0.1/live.sdp
 ~~~

@@ -20,7 +20,7 @@ ffmpeg -re -i video.h264 -vcodec copy -f rtp rtp://127.0.0.1:6666
 ## RTMP server
 pull rtmp server
 you need deploy rtmp + nginx + ffmpeg server
-- start nginx server
+- start nginx server　<br>
 sudo nginx
 - live: deploy rtmp path
 ~~~

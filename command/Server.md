@@ -16,3 +16,26 @@ create rtp server
 ~~~
 ffmpeg -re -i video.h264 -vcodec copy -f rtp rtp://127.0.0.1:6666
 ~~~
+
+## RTMP server
+pull rtmp server
+you need deploy rtmp + nginx + ffmpeg server
+- start nginx server　<br>
+sudo nginx
+- live: deploy rtmp path
+~~~
+ffmpeg -i test.flv -f flv rtmp://127.0.0.1/live/test
+~~~
+
+
+## RTSP server
+FFMPEG + EasyDarwin
+- start EasyDarwin <br>
+sh start.sh
+- stop EasyDarwin <br>
+sh stop.sh
+- configure EasyDarwin <br>
+easydarwin.ini
+~~~
+ffmpeg -re -i test.mp4 -f rtsp -rtsp_transport tcp rtsp://127.0.0.1/live.sdp
+~~~

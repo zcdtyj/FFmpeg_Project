@@ -28,6 +28,12 @@ int main(int argc, char *argv[])
     avformat_alloc_output_context2(&pFormatCtx, NULL, NULL, out_file);
     fmt = pFormatCtx->oformat;
 
+    if(avio_open(&pFormatCtx->pb, out_file, AVIO_FLAG_READ_WRITE) < 0) 
+	{
+	    printf("Filed to open output file!\n");
+        return -1;
+	}
+
     video_st = avformat_new_stream(pFormatCtx, 0);
     if(video_st == NULL) {
         return -1;

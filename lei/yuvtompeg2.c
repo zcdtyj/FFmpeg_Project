@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     oc = avformat_alloc_context();
     fmt = av_guess_format(NULL, filename, NULL);
     oc->oformat = fmt;
+    
     if(avio_open(&oc->pb, filename, AVIO_FLAG_READ_WRITE) < 0) 
     {
         return -1;

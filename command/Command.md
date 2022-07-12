@@ -12,6 +12,10 @@ decode
 ffmpeg -i test_yuv420p_320x180.h264 test_yuv420p_320x180.yuv
 ~~~
 
+###h264_mp4toannexb and hevc_mp4toannexb
+~~~
+ffmpeg -i INPUT.mp4 -codec copy -bsf:v h264_mp4toannexb OUTPUT.ts
+~~~
 
 ### MPEG2
 encode
@@ -61,6 +65,13 @@ ffmpeg -i input.flv -c copy -f mp4 output.mp4
 vga to FHD
 ~~~
 ffmpeg -i test.mp4 -vf scale=1920:1080 test_1920x1080.mp4
+~~~
+
+# Tool
+## fragment
+Take a Fragment
+~~~
+ffmpeg -ss 00:03:00 -i video.mp4 -to 00:02:00 -c copy cut.mp4
 ~~~
 
 # ffprobe

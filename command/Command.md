@@ -17,6 +17,11 @@ ffmpeg -i test_yuv420p_320x180.h264 test_yuv420p_320x180.yuv
 ffmpeg -i INPUT.mp4 -codec copy -bsf:v h264_mp4toannexb OUTPUT.ts
 ~~~
 
+### h265 and mp3 and 10bit to 8bit
+~~~
+ffmpeg -i out.mp4 -c:v libx265 -preset medium -x265-params crf=28 -pix_fmt yuv420p -c:a libmp3lame -max_muxing_queue_size 9999 outmp3.mp4
+~~~
+
 ### MPEG2
 encode
 ~~~

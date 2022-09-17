@@ -35,7 +35,8 @@ ffmpeg -i test_yuv420p_320x180.mpg test_yuv420p_320x180.yuv
 
 ### yuv420p10le to nv12
 ~~~
-ffmpeg -s 3840x2160 -pix_fmt yuv420p10le -i videoplayback.yuv -pix_fmt nv12 videoplaybacknv12.yuv
+ffmpeg -s 3840x2160 -r 60 -pix_fmt yuv420p10le -i videoplayback.yuv -pix_fmt nv12 videoplaybacknv12.yuv
+ffmpeg -r 60 -i videoplayback.mp4 -pix_fmt nv12 videoplayback.yuv
 ~~~
 
 ## Extract data

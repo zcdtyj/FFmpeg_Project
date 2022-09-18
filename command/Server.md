@@ -39,3 +39,8 @@ easydarwin.ini
 ~~~
 ffmpeg -re -i test.mp4 -f rtsp -rtsp_transport tcp rtsp://127.0.0.1/live.sdp
 ~~~
+
+## rtmp+nvenc推流
+~~~
+ffmpeg -y -vsync 0 -pix_fmt yuv420p -s 3840*2160 -r 60 -i videoplayback.yuv -c:v h264_nvenc -b:v 8M -f flv rtmp://127.0.0.1:1935/mylive/ets
+~~~
